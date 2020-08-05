@@ -2,6 +2,6 @@ package main
 
 import "fmt"
 
-func main(){
-  fmt.println("Hello Git")
+func main() {
+	fmt.Println("Hello Git,From Local")
 }
