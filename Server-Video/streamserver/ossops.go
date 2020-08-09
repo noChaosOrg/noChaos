@@ -8,17 +8,6 @@ import (
 	"log"
 )
 
-var AK, SK, VIDEO_BUCKET, VIDEO_OSS_CNAME string
-
-func init() {
-	//七牛云密钥信息
-	AK = "qzgEtUpjZbtbFj8TKNuWi0xtmUI7qlm9tx_ZAZbV"
-	SK = "g00Xbrc1XpW56I6RIg24uMrNmRMSHbeNWTbuYoyC"
-	VIDEO_BUCKET = "nochaos-video"
-	VIDEO_OSS_CNAME = "http://cdn.nochaos.top/"
-	//VIDEO_OSS_CNAME = "http://qdo4s99e6.bkt.clouddn.com/"
-}
-
 ////获取token
 //func getToken()  string{
 //	//自定义凭证有效期（示例2小时，Expires 单位为秒，为上传凭证的有效时间）
@@ -35,7 +24,7 @@ func UploadToOSS(filename, path, bn string) bool {
 	putPolicy := storage.PutPolicy{
 		Scope: bn,
 	}
-	mac := qbox.NewMac(AK, SK)
+	mac := qbox.NewMac(OSS_AK, OSS_SK)
 	upToken := putPolicy.UploadToken(mac)
 
 	cfg := storage.Config{}

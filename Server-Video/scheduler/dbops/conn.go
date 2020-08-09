@@ -16,3 +16,5 @@ func init() {
 		panic(err.Error())
 	}
 }
+
+//config.GetLbAddr()

@@ -8,10 +8,10 @@ package utils
 import (
 	"crypto/rand"
 	"fmt"
+	"github.com/noChaos1012/noChaos/Server-Video/api/config"
 	"io"
 	"log"
 	"net/http"
-	"nochaos/config"
 	"strconv"
 	"time"
 )

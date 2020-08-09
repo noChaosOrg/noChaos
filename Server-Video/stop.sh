@@ -19,3 +19,6 @@ for webPID in $(pgrep web)
 do
   kill -9 $webPID
 done
+
+echo "stop finished"
+

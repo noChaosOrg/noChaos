@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/julienschmidt/httprouter"
+	"github.com/noChaos1012/noChaos/Server-Video/web/config"
 	"html/template"
 	"io"
 	"io/ioutil"
@@ -11,7 +12,6 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/url"
-	"nochaos/config"
 )
 
 type IndexPage struct {

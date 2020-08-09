@@ -3,12 +3,12 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/noChaos1012/noChaos/Server-Video/web/config"
 	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
-	"nochaos/config"
 )
 
 var httpClient *http.Client

@@ -2,22 +2,13 @@ package main
 
 import (
 	"github.com/julienschmidt/httprouter"
-	"html/template"
+	"github.com/noChaos1012/noChaos/Server-Video/streamserver/config"
 	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
 )
-
-//测试
-func testPageHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-	t, _ := template.ParseFiles("./videos/upload.html")
-	err := t.Execute(w, nil)
-	if err != nil {
-		panic(err.Error())
-	}
-}
 
 func streamHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	/*
@@ -36,7 +27,7 @@ func streamHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) 
 
 	//cdn.nochaos.top
 	//使用OSS访问
-	targetUrl := VIDEO_OSS_CNAME + p.ByName("vid-id")
+	targetUrl := config.GetOssAddr() + p.ByName("vid-id")
 	http.Redirect(w, r, targetUrl, http.StatusMovedPermanently)
 
 }
@@ -70,7 +61,7 @@ func uploadHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) 
 		return
 	}
 	//上传到七牛云OSS
-	ossRet := UploadToOSS(fn, VIDEO_DIR+fn, VIDEO_BUCKET)
+	ossRet := UploadToOSS(fn, VIDEO_DIR+fn, config.GetOssBucket())
 	if !ossRet {
 		sendErrorResponse(w, http.StatusInternalServerError, "Internal Error")
 		return
